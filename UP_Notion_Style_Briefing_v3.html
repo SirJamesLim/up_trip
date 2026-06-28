@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>UP 2박 3일 여행 브리핑</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root {
+  --bg:#f7f4ee; --paper:#fffdf8; --ink:#232323; --muted:#666;
+  --line:#e5ded0; --accent:#2f6f63; --accent2:#8a5a2b; --blue:#2b5876;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;
+  line-height:1.55;
+}
+.page {
+  max-width:980px; margin:28px auto; padding:0 18px 60px;
+}
+.hero {
+  background:linear-gradient(135deg, rgba(47,111,99,.92), rgba(43,88,118,.88)), url('https://www.nps.gov/piro/planyourvisit/images/P1047269-2_1.jpg?autorotate=false&maxwidth=650');
+  background-size:cover; background-position:center;
+  color:white; border-radius:28px; padding:44px 38px; min-height:320px;
+  box-shadow:0 18px 48px rgba(31,42,36,.22);
+}
+.kicker { font-size:14px; letter-spacing:.12em; text-transform:uppercase; opacity:.85; }
+h1 { font-size:44px; line-height:1.1; margin:12px 0 8px; }
+.subtitle { font-size:18px; opacity:.94; max-width:700px; }
+.meta {
+  margin-top:24px; display:flex; flex-wrap:wrap; gap:10px;
+}
+.pill {
+  background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.24);
+  border-radius:999px; padding:8px 13px; font-size:14px; backdrop-filter:blur(8px);
+}
+.section {
+  background:var(--paper); border:1px solid var(--line); border-radius:24px;
+  padding:26px; margin-top:20px; box-shadow:0 12px 34px rgba(62,54,42,.08);
+}
+h2 { margin:0 0 14px; font-size:26px; }
+h3 { margin:0 0 8px; font-size:20px; }
+.grid { display:grid; grid-template-columns:1.1fr .9fr; gap:18px; }
+@media (max-width:760px) { .grid { grid-template-columns:1fr; } h1 {font-size:34px;} }
+.mapbox {
+  background:#fbfaf6; border:1px dashed #d6cbb9; border-radius:20px;
+  padding:20px; font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  white-space:pre; overflow-x:auto; color:#2b2b2b;
+}
+.timeline {
+  display:grid; gap:12px; margin-top:14px;
+}
+.stop {
+  display:grid; grid-template-columns:84px 1fr; gap:14px; align-items:start;
+  padding:14px; background:#fbfaf6; border:1px solid #eee6d8; border-radius:18px;
+}
+.time { font-weight:800; color:var(--accent); font-size:14px; }
+.cardrow { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+@media (max-width:760px) { .cardrow { grid-template-columns:1fr; } }
+.place {
+  overflow:hidden; border:1px solid var(--line); border-radius:22px; background:white;
+}
+.place img { width:100%; height:180px; object-fit:cover; display:block; background:#ddd; }
+.place .body { padding:16px; }
+.tag { display:inline-block; background:#edf5f1; color:#245e53; border-radius:999px; padding:5px 10px; font-size:12px; font-weight:700; margin-right:6px; }
+ul { margin:8px 0 0 20px; padding:0; }
+a.button {
+  display:inline-block; margin:6px 7px 0 0; padding:9px 12px;
+  background:#273b36; color:white; text-decoration:none; border-radius:12px; font-size:14px;
+}
+a.button.secondary { background:#eee7db; color:#2f2a23; }
+.route {
+  display:grid; gap:10px; margin-top:10px;
+}
+.route .leg {
+  display:flex; justify-content:space-between; gap:14px;
+  padding:12px 14px; border-radius:16px; background:#fbfaf6; border:1px solid #eee6d8;
+}
+.small { color:var(--muted); font-size:13px; }
+.footer { color:#666; font-size:12px; margin-top:20px; padding:0 4px; }
+.printnote { margin-top:10px; color:#7a6c5b; font-size:13px; }
+@media print {
+  body { background:white; }
+  .page { margin:0; max-width:none; }
+  .section, .hero { box-shadow:none; page-break-inside:avoid; }
+  a.button { color:white !important; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="hero">
+    <div class="kicker">Upper Peninsula Road Trip Briefing</div>
+    <h1>UP 2박 3일 여행 브리핑</h1>
+    <p class="subtitle"><b>Tahquamenon Falls → Pictured Rocks → Marquette → Kitch-iti-kipi</b> 중심으로 Upper Peninsula의 대표 자연경관을 둘러보는 코스.</p>
+    <div class="meta">
+      <span class="pill">출발: 금요일 4 PM / Ann Arbor</span>
+      <span class="pill">1박: Wyndham St. Ignace</span>
+      <span class="pill">2박: Negaunee</span>
+      <span class="pill">핵심: 동선 + 주요 명소</span>
+    </div>
+      <a class="button" href="https://maps.app.goo.gl/YaWaRFq63meGf2Tt8" target="_blank">🗺️ 전체 Google Maps 동선</a>
+</section>
+
+  <section class="section">
+    <h2>🗺️ 전체 동선</h2>
+    <div class="mapbox">Ann Arbor
+   ↓
+🏨 St. Ignace
+   ↓
+🌊 Tahquamenon Falls
+   ↓
+🚢 Munising / Pictured Rocks
+   ↓
+📸 Miners Castle
+   ↓
+🏨 Negaunee
+   ↓
+🌊 Marquette / Presque Isle Park
+   ↓
+💎 Kitch-iti-kipi
+   ↓
+Ann Arbor</div>
+    <p class="printnote">Day 2에 UP 핵심인 폭포 + Pictured Rocks를 보고, Day 3 귀가 동선에 Kitch-iti-kipi를 넣는 일정.</p>
+  </section>
+
+  <section class="section">
+    <h2>📅 Day 1 — 금요일: Ann Arbor → St. Ignace</h2>
+    <div class="timeline">
+      <div class="stop"><div class="time">16:00</div><div><b>Ann Arbor 출발</b><br><span class="small">금요일 오후 출발이므로 첫날은 사실상 이동일.</span></div></div>
+      <div class="stop"><div class="time">21:30–22:00</div><div><b>Wyndham St. Ignace 도착 / 체크인</b><br><span class="small">컨디션 되면 Mackinac Bridge 야경이나 호숫가 산책 정도만.</span></div></div>
+    </div>
+    <a class="button secondary" href="https://www.google.com/maps/dir/Ann%20Arbor%2C%20MI/Wyndham%20St.%20Ignace%2C%20293%20West%20US%202%2C%20St%20Ignace%2C%20MI%2049781" target="_blank">Day 1 Google Maps</a>
+  </section>
+
+  <section class="section">
+    <h2>📅 Day 2 — 토요일: Tahquamenon + Pictured Rocks</h2>
+    <div class="route">
+      <div class="leg"><span>🏨 St. Ignace → 🌊 Tahquamenon Falls</span><b>약 1.5시간</b></div>
+      <div class="leg"><span>🌊 Tahquamenon Falls → 🚢 Munising</span><b>약 1.75–2시간</b></div>
+      <div class="leg"><span>🚢 Munising → 📸 Miners Castle → 🏨 Negaunee</span><b>저녁 이동</b></div>
+    </div>
+    <div class="timeline">
+      <div class="stop"><div class="time">07:30</div><div><b>숙소 출발</b></div></div>
+      <div class="stop"><div class="time">09:00–11:00</div><div><b>Tahquamenon Falls</b><br>Upper Falls 중심 + 시간이 되면 Lower Falls. 체류 2시간 정도.</div></div>
+      <div class="stop"><div class="time">12:30 전후</div><div><b>Munising 도착</b><br>점심 후 Pictured Rocks Cruise 시간에 맞춰 이동.</div></div>
+      <div class="stop"><div class="time">오후</div><div><b>Pictured Rocks Boat Cruise</b><br>이번 일정 메인. 절벽/동굴/대표 암석을 물 위에서 한 번에 보는 코스.</div></div>
+      <div class="stop"><div class="time">크루즈 후</div><div><b>Miners Castle</b><br>차로 접근 가능한 대표 전망대. 짧게 사진 찍고 Negaunee 숙소로 이동.</div></div>
+    </div>
+    <a class="button secondary" href="https://www.google.com/maps/dir/Wyndham%20St.%20Ignace%2C%20293%20West%20US%202%2C%20St%20Ignace%2C%20MI%2049781/Tahquamenon%20Falls%20State%20Park%2C%20Paradise%2C%20MI/Munising%2C%20MI/Miners%20Castle%2C%20Pictured%20Rocks%20National%20Lakeshore%2C%20MI/609%20Baldwin%20Avenue%2C%20Negaunee%2C%20MI%2049866" target="_blank">Day 2 Google Maps</a>
+    <a class="button" href="https://picturedrocks.com/" target="_blank">Pictured Rocks Cruise 예약</a>
+  </section>
+
+  <section class="section">
+    <h2>📅 Day 3 — 일요일: Marquette → Kitch-iti-kipi → Ann Arbor</h2>
+    <div class="route">
+      <div class="leg"><span>🏨 Negaunee → 🌊 Presque Isle Park</span><b>약 20분</b></div>
+      <div class="leg"><span>🌊 Marquette → 💎 Kitch-iti-kipi</span><b>약 1.5시간</b></div>
+      <div class="leg"><span>💎 Kitch-iti-kipi → Ann Arbor</span><b>약 5.5–6시간</b></div>
+    </div>
+    <div class="timeline">
+      <div class="stop"><div class="time">08:00</div><div><b>Presque Isle Park / Black Rocks</b><br>Lake Superior 해안 절벽과 Marquette 분위기 확인. 1시간 내외.</div></div>
+      <div class="stop"><div class="time">10:30 전후</div><div><b>Kitch-iti-kipi</b><br>자체 이동식 관찰 뗏목으로 맑은 샘과 송어를 보는 짧고 독특한 스팟. 30–45분.</div></div>
+      <div class="stop"><div class="time">오후</div><div><b>Ann Arbor 복귀</b><br>US-2 경유로 내려오며 귀가. 중간 휴식 포함하면 저녁 도착 예상.</div></div>
+    </div>
+    <a class="button secondary" href="https://www.google.com/maps/dir/609%20Baldwin%20Avenue%2C%20Negaunee%2C%20MI%2049866/Presque%20Isle%20Park%2C%20Marquette%2C%20MI/Palms%20Book%20State%20Park%2C%201380%20Sawmill%20Rd%2C%20Manistique%2C%20MI%2049854/Ann%20Arbor%2C%20MI" target="_blank">Day 3 Google Maps</a>
+  </section>
+
+  <section class="section">
+    <h2>📍 주요 명소 카드</h2>
+    <div class="cardrow">
+      <div class="place">
+        <img src="https://www.michigan.org/sites/default/files/styles/listing_slideshow/public/listing_images/profile/11158/f7eda577a7e4f59dbb3c09ea7a002f0c_tahquamenonfallssp-upperfalls.jpg?itok=iZ5lEMFJ" alt="Tahquamenon Falls">
+        <div class="body">
+          <span class="tag">폭포</span><span class="tag">Day 2</span>
+          <h3>Tahquamenon Falls</h3>
+          <p>UP 동쪽 대표 폭포. Upper Falls가 핵심이고, 시간이 되면 Lower Falls까지 보면 좋음.</p>
+          <ul><li>Must-see: Upper Falls overlook</li><li>예상 체류: 1.5–2시간</li></ul>
+          <a class="button secondary" href="https://www.michigan.gov/recsearch/parks/tahquamenonfalls" target="_blank">공식 정보</a>
+        </div>
+      </div>
+      <div class="place">
+        <img src="https://www.nps.gov/piro/planyourvisit/images/P1047269-2_1.jpg?autorotate=false&maxwidth=650" alt="Pictured Rocks / Miners Castle">
+        <div class="body">
+          <span class="tag">메인</span><span class="tag">Day 2</span>
+          <h3>Pictured Rocks + Miners Castle</h3>
+          <p>이번 여행의 중심. 절벽은 물 위에서 보는 크루즈가 가장 효율적이고, Miners Castle은 차로 갈 수 있는 대표 전망대.</p>
+          <ul><li>Must-see: Boat Cruise, Miners Castle</li><li>예상 체류: 3–4시간</li></ul>
+          <a class="button secondary" href="https://www.nps.gov/piro/planyourvisit/index.htm" target="_blank">NPS 정보</a>
+        </div>
+      </div>
+      <div class="place">
+        <div style="height:180px;background:linear-gradient(135deg,#2b5876,#4e8aa8);display:flex;align-items:center;justify-content:center;color:white;font-size:56px;">🌊</div>
+        <div class="body">
+          <span class="tag">호수 절벽</span><span class="tag">Day 3</span>
+          <h3>Presque Isle Park / Black Rocks</h3>
+          <p>Marquette의 대표 해안 공원. Lake Superior와 검은 현무암 절벽 풍경을 짧게 보기 좋음.</p>
+          <ul><li>Must-see: Black Rocks, shoreline overlook</li><li>예상 체류: 약 1시간</li></ul>
+          <a class="button secondary" href="https://www.travelmarquette.com/things-to-do/attractions/presque-isle-park/" target="_blank">공식/관광 정보</a>
+        </div>
+      </div>
+      <div class="place">
+        <div style="height:180px;background:linear-gradient(135deg,#0d5c63,#44a08d);display:flex;align-items:center;justify-content:center;color:white;font-size:56px;">💎</div>
+        <div class="body">
+          <span class="tag">천연 샘</span><span class="tag">Day 3</span>
+          <h3>Kitch-iti-kipi</h3>
+          <p>Michigan 최대 freshwater spring. 귀가 동선에 넣기 좋은 독특한 짧은 스팟.</p>
+          <ul><li>Must-see: observation raft</li><li>예상 체류: 30–45분</li></ul>
+          <a class="button secondary" href="https://www.michigan.gov/recsearch/parks/palmsbook" target="_blank">공식 정보</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🧭 한 줄 결론</h2>
+    <p><b>이 루트는 “Mackinac Island 관광”이 아니라 “UP 자연경관 압축 코스”로 잡는 일정.</b> Day 2에 폭포와 Pictured Rocks를 보고, Day 3에 Marquette 해안과 Kitch-iti-kipi를 넣으면 2박 3일 안에서 UP의 대표적인 풍경 유형을 꽤 균형 있게 볼 수 있음.</p>
+  </section>
+
+  <div class="footer">
+    <b>Sources / image credits:</b> Michigan DNR & Michigan.org for Tahquamenon and Palms Book/Kitch-iti-kipi; National Park Service for Pictured Rocks and Miners Castle; Travel Marquette for Presque Isle / Black Rocks. Driving times are rough planning estimates and should be checked in Google Maps before departure.
+  </div>
+</div>
+</body>
+</html>
