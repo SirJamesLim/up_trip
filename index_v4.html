@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UP 2박 3일 여행 브리핑</title>
+<style>
+:root {
+  --bg:#f4efe7;
+  --paper:#fffaf1;
+  --paper2:#fffdf8;
+  --ink:#1f2623;
+  --muted:#69736f;
+  --line:#e6dccd;
+  --green:#254f45;
+  --green2:#3f796b;
+  --blue:#244c63;
+  --sand:#d9b98f;
+  --shadow: 0 22px 60px rgba(52, 42, 30, .14);
+  --shadow2: 0 12px 30px rgba(52, 42, 30, .10);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:
+    radial-gradient(circle at top left, rgba(217,185,143,.38), transparent 28rem),
+    radial-gradient(circle at top right, rgba(63,121,107,.18), transparent 30rem),
+    var(--bg);
+  color:var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+  line-height:1.58;
+}
+a { color:inherit; }
+.wrapper {
+  max-width:1120px;
+  margin:0 auto;
+  padding:24px 18px 72px;
+}
+.nav {
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter: blur(14px);
+  background:rgba(244,239,231,.74);
+  border-bottom:1px solid rgba(230,220,205,.7);
+}
+.nav-inner {
+  max-width:1120px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:12px 18px;
+}
+.logo { font-weight:850; letter-spacing:-.02em; }
+.nav-links { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+.nav-links a {
+  text-decoration:none;
+  color:#31443d;
+  font-size:13px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,250,241,.7);
+  border:1px solid rgba(230,220,205,.75);
+}
+.hero {
+  min-height:560px;
+  border-radius:34px;
+  overflow:hidden;
+  position:relative;
+  display:grid;
+  align-items:end;
+  box-shadow:var(--shadow);
+  background:
+    linear-gradient(180deg, rgba(15,32,30,.18), rgba(14,31,29,.82)),
+    url("https://www.nps.gov/piro/planyourvisit/images/P1047269-2_1.jpg?autorotate=false&maxwidth=900") center/cover;
+}
+.hero-content {
+  color:white;
+  padding:52px;
+  max-width:850px;
+}
+.kicker {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.14);
+  border-radius:999px;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  backdrop-filter: blur(12px);
+}
+h1 {
+  margin:18px 0 10px;
+  font-size: clamp(40px, 7vw, 74px);
+  line-height:1.02;
+  letter-spacing:-.055em;
+}
+.hero p {
+  font-size:20px;
+  max-width:720px;
+  opacity:.96;
+  margin:0;
+}
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:28px;
+}
+.button {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  border-radius:15px;
+  padding:11px 14px;
+  font-weight:760;
+  font-size:14px;
+  transition:.16s ease;
+}
+.button.primary { background:white; color:#193b34; }
+.button.dark { background:#223832; color:white; }
+.button.light { background:#f0e7d8; color:#2a251f; }
+.button:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.12); }
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat {
+  background:rgba(255,250,241,.86);
+  border:1px solid rgba(230,220,205,.92);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:var(--shadow2);
+}
+.stat .num { font-size:26px; font-weight:900; color:var(--green); letter-spacing:-.04em; }
+.stat .label { color:var(--muted); font-size:13px; }
+.section {
+  background:rgba(255,250,241,.86);
+  border:1px solid rgba(230,220,205,.95);
+  border-radius:30px;
+  padding:30px;
+  margin-top:20px;
+  box-shadow:var(--shadow2);
+}
+.section h2 {
+  margin:0 0 16px;
+  font-size:30px;
+  letter-spacing:-.035em;
+}
+.sub {
+  color:var(--muted);
+  margin-top:-6px;
+}
+.route-grid {
+  display:grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap:20px;
+  align-items:stretch;
+}
+.route-map {
+  position:relative;
+  min-height:480px;
+  border-radius:28px;
+  background:
+    linear-gradient(135deg, rgba(36,76,99,.92), rgba(37,79,69,.92)),
+    radial-gradient(circle at 30% 15%, rgba(255,255,255,.24), transparent 12rem);
+  color:white;
+  overflow:hidden;
+  padding:26px;
+}
+.route-map:before {
+  content:"";
+  position:absolute;
+  inset:20px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:24px;
+  pointer-events:none;
+}
+.map-title { font-weight:850; font-size:18px; margin-bottom:20px; }
+.map-line {
+  position:absolute;
+  left:72px;
+  top:86px;
+  bottom:54px;
+  width:3px;
+  background:linear-gradient(180deg,#fff,rgba(255,255,255,.25));
+  border-radius:999px;
+}
+.pin {
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:12px;
+  align-items:center;
+  margin:15px 0;
+}
+.pin .dot {
+  width:44px; height:44px;
+  display:grid; place-items:center;
+  border-radius:16px;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.24);
+  backdrop-filter: blur(12px);
+  font-size:22px;
+}
+.pin b { display:block; }
+.pin span { font-size:12px; opacity:.82; }
+.daycards {
+  display:grid;
+  gap:12px;
+}
+.daycard {
+  background:var(--paper2);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+}
+.daycard h3 { margin:0 0 8px; font-size:20px; }
+.daycard ul { margin:8px 0 0 20px; padding:0; }
+.timeline {
+  display:grid;
+  gap:16px;
+}
+.day {
+  display:grid;
+  grid-template-columns: 112px 1fr;
+  gap:18px;
+  align-items:start;
+}
+.day-badge {
+  position:sticky;
+  top:70px;
+  background:var(--green);
+  color:white;
+  border-radius:22px;
+  padding:16px 12px;
+  text-align:center;
+  box-shadow:var(--shadow2);
+}
+.day-badge b { display:block; font-size:22px; }
+.day-badge span { font-size:12px; opacity:.82; }
+.stops {
+  display:grid;
+  gap:12px;
+}
+.stop {
+  background:var(--paper2);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:18px;
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:14px;
+}
+.time {
+  font-weight:900;
+  color:var(--green2);
+}
+.stop h3 { margin:0 0 6px; font-size:19px; }
+.stop p { margin:0; color:#4b5551; }
+.arrow {
+  text-align:center;
+  color:#86745d;
+  font-size:13px;
+  margin:2px 0;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.place {
+  background:var(--paper2);
+  border:1px solid var(--line);
+  border-radius:26px;
+  overflow:hidden;
+  min-height:100%;
+}
+.photo {
+  height:170px;
+  background:#d7c8b3 center/cover;
+}
+.fallback {
+  height:170px;
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:56px;
+  background:linear-gradient(135deg, #244c63, #3f796b);
+}
+.place-body { padding:16px; }
+.tag {
+  display:inline-flex;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#edf4f0;
+  color:#2c6558;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+.place h3 { margin:2px 0 8px; font-size:18px; }
+.place p { margin:0; color:#56615d; font-size:14px; }
+.quick {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.quick a {
+  background:var(--paper2);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:16px;
+  text-decoration:none;
+}
+.quick b { display:block; }
+.quick span { color:var(--muted); font-size:13px; }
+.footer {
+  margin-top:20px;
+  color:#746b60;
+  font-size:12px;
+  padding:0 4px;
+}
+@media (max-width:900px) {
+  .stats, .cards { grid-template-columns:repeat(2,1fr); }
+  .route-grid { grid-template-columns:1fr; }
+  .quick { grid-template-columns:1fr; }
+}
+@media (max-width:680px) {
+  .wrapper { padding:16px 12px 44px; }
+  .nav-inner { align-items:flex-start; flex-direction:column; }
+  .hero { min-height:520px; border-radius:26px; }
+  .hero-content { padding:30px 22px; }
+  .hero p { font-size:17px; }
+  .section { padding:20px; border-radius:24px; }
+  .stats, .cards { grid-template-columns:1fr; }
+  .day { grid-template-columns:1fr; }
+  .day-badge { position:relative; top:auto; display:inline-block; text-align:left; }
+  .stop { grid-template-columns:1fr; }
+  .route-map { min-height:auto; }
+  .map-line { display:none; }
+}
+@media print {
+  .nav { display:none; }
+  body { background:white; }
+  .wrapper { max-width:none; padding:0; }
+  .hero,.section,.stat { box-shadow:none; }
+  .section,.hero { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">🚗 UP Trip Briefing</div>
+    <div class="nav-links">
+      <a href="#route">전체 동선</a>
+      <a href="#schedule">일정</a>
+      <a href="#spots">주요 명소</a>
+      <a href="https://maps.app.goo.gl/YaWaRFq63meGf2Tt8" target="_blank">Google Maps</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrapper">
+  <section class="hero">
+    <div class="hero-content">
+      <div class="kicker">Upper Peninsula · 2 Nights 3 Days</div>
+      <h1>UP 2박 3일<br>여행 브리핑</h1>
+      <p><b>Tahquamenon Falls → Pictured Rocks → Marquette → Kitch-iti-kipi</b> 중심으로 Upper Peninsula의 대표 자연경관을 둘러보는 코스.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://maps.app.goo.gl/YaWaRFq63meGf2Tt8" target="_blank">🗺️ 전체 Google Maps 동선</a>
+        <a class="button dark" href="#schedule">📅 일정 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="num">2박 3일</div><div class="label">금요일 오후 출발</div></div>
+    <div class="stat"><div class="num">4개</div><div class="label">핵심 자연 명소</div></div>
+    <div class="stat"><div class="num">2곳</div><div class="label">확정 숙소</div></div>
+    <div class="stat"><div class="num">UP 중심</div><div class="label">동선 최적화</div></div>
+  </div>
+
+  <section class="section" id="route">
+    <h2>🗺️ 전체 동선</h2>
+    <p class="sub">Day 2에 폭포 + Pictured Rocks를 보고, Day 3 귀가 동선에 Kitch-iti-kipi를 넣는 구조.</p>
+    <div class="route-grid">
+      <div class="route-map">
+        <div class="map-title">Route Overview</div>
+        <div class="map-line"></div>
+        <div class="pin"><div class="dot">🚗</div><div><b>Ann Arbor</b><span>금요일 4 PM 출발</span></div></div>
+        <div class="pin"><div class="dot">🏨</div><div><b>St. Ignace</b><span>1박 · Wyndham St. Ignace</span></div></div>
+        <div class="pin"><div class="dot">🌊</div><div><b>Tahquamenon Falls</b><span>Day 2 오전</span></div></div>
+        <div class="pin"><div class="dot">🚢</div><div><b>Munising / Pictured Rocks</b><span>Day 2 오후</span></div></div>
+        <div class="pin"><div class="dot">🏨</div><div><b>Negaunee</b><span>2박 · 609 Baldwin Ave</span></div></div>
+        <div class="pin"><div class="dot">🌊</div><div><b>Marquette / Presque Isle</b><span>Day 3 아침</span></div></div>
+        <div class="pin"><div class="dot">💎</div><div><b>Kitch-iti-kipi</b><span>Day 3 귀가 동선</span></div></div>
+        <div class="pin"><div class="dot">🏁</div><div><b>Ann Arbor</b><span>일요일 저녁 복귀</span></div></div>
+      </div>
+      <div class="daycards">
+        <div class="daycard">
+          <h3>Day 1 · 이동</h3>
+          <ul><li>Ann Arbor → St. Ignace</li><li>늦은 체크인, 가능하면 다리 야경만 짧게</li></ul>
+        </div>
+        <div class="daycard">
+          <h3>Day 2 · 핵심 일정</h3>
+          <ul><li>Tahquamenon Falls</li><li>Pictured Rocks Boat Cruise</li><li>Miners Castle</li></ul>
+        </div>
+        <div class="daycard">
+          <h3>Day 3 · 귀가 루트</h3>
+          <ul><li>Presque Isle Park / Black Rocks</li><li>Kitch-iti-kipi</li><li>Ann Arbor 복귀</li></ul>
+        </div>
+        <a class="button dark" href="https://maps.app.goo.gl/YaWaRFq63meGf2Tt8" target="_blank">🗺️ 전체 Google Maps 동선 열기</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="schedule">
+    <h2>📅 일정표</h2>
+    <div class="timeline">
+      <div class="day">
+        <div class="day-badge"><b>Day 1</b><span>Friday</span></div>
+        <div class="stops">
+          <div class="stop"><div class="time">16:00</div><div><h3>Ann Arbor 출발</h3><p>첫날은 이동일. 중간 휴식 포함해서 늦은 저녁 St. Ignace 도착 예상.</p></div></div>
+          <div class="arrow">↓ 약 5–6시간</div>
+          <div class="stop"><div class="time">21:30–22:00</div><div><h3>Wyndham St. Ignace 체크인</h3><p>컨디션 되면 Mackinac Bridge 야경이나 호숫가 산책 정도만.</p></div></div>
+          <a class="button light" href="https://www.google.com/maps/dir/Ann%20Arbor%2C%20MI/Wyndham%20St.%20Ignace%2C%20293%20West%20US%202%2C%20St%20Ignace%2C%20MI%2049781" target="_blank">Day 1 지도</a>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-badge"><b>Day 2</b><span>Saturday</span></div>
+        <div class="stops">
+          <div class="stop"><div class="time">07:30</div><div><h3>St. Ignace 숙소 출발</h3><p>일찍 나가야 Tahquamenon과 Pictured Rocks를 같은 날 안정적으로 볼 수 있음.</p></div></div>
+          <div class="arrow">↓ 약 1.5시간</div>
+          <div class="stop"><div class="time">09:00–11:00</div><div><h3>Tahquamenon Falls</h3><p>Upper Falls 중심. 시간이 되면 Lower Falls까지 짧게.</p></div></div>
+          <div class="arrow">↓ 약 1.75–2시간</div>
+          <div class="stop"><div class="time">12:30 전후</div><div><h3>Munising 도착</h3><p>Pictured Rocks Boat Cruise 출발 시간 기준으로 점심/대기.</p></div></div>
+          <div class="stop"><div class="time">오후</div><div><h3>Pictured Rocks Boat Cruise</h3><p>이번 여행 메인. 절벽과 대표 암석들을 물 위에서 보는 일정.</p></div></div>
+          <div class="stop"><div class="time">크루즈 후</div><div><h3>Miners Castle</h3><p>차로 접근 가능한 대표 전망대. 사진 찍고 Negaunee 숙소 이동.</p></div></div>
+          <a class="button light" href="https://www.google.com/maps/dir/Wyndham%20St.%20Ignace%2C%20293%20West%20US%202%2C%20St%20Ignace%2C%20MI%2049781/Tahquamenon%20Falls%20State%20Park%2C%20Paradise%2C%20MI/Munising%2C%20MI/Miners%20Castle%2C%20Pictured%20Rocks%20National%20Lakeshore%2C%20MI/609%20Baldwin%20Avenue%2C%20Negaunee%2C%20MI%2049866" target="_blank">Day 2 지도</a>
+          <a class="button dark" href="https://picturedrocks.com/" target="_blank">Pictured Rocks Cruise 예약</a>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-badge"><b>Day 3</b><span>Sunday</span></div>
+        <div class="stops">
+          <div class="stop"><div class="time">08:00</div><div><h3>Presque Isle Park / Black Rocks</h3><p>Marquette 해안과 Lake Superior 분위기를 짧게 보는 코스.</p></div></div>
+          <div class="arrow">↓ 약 1.5시간</div>
+          <div class="stop"><div class="time">10:30 전후</div><div><h3>Kitch-iti-kipi</h3><p>귀가 동선에 넣는 독특한 천연 샘. 관찰 뗏목 포함 30–45분 정도.</p></div></div>
+          <div class="arrow">↓ 약 5.5–6시간</div>
+          <div class="stop"><div class="time">오후–저녁</div><div><h3>Ann Arbor 복귀</h3><p>US-2 경유. 중간 휴식 포함하면 저녁 도착 예상.</p></div></div>
+          <a class="button light" href="https://www.google.com/maps/dir/609%20Baldwin%20Avenue%2C%20Negaunee%2C%20MI%2049866/Presque%20Isle%20Park%2C%20Marquette%2C%20MI/Palms%20Book%20State%20Park%2C%201380%20Sawmill%20Rd%2C%20Manistique%2C%20MI%2049854/Ann%20Arbor%2C%20MI" target="_blank">Day 3 지도</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="spots">
+    <h2>📍 주요 명소</h2>
+    <div class="cards">
+      <div class="place">
+        <div class="photo" style="background-image:url('https://www.michigan.org/sites/default/files/styles/listing_slideshow/public/listing_images/profile/11158/f7eda577a7e4f59dbb3c09ea7a002f0c_tahquamenonfallssp-upperfalls.jpg?itok=iZ5lEMFJ')"></div>
+        <div class="place-body">
+          <span class="tag">Day 2 · 오전</span>
+          <h3>Tahquamenon Falls</h3>
+          <p>UP 동쪽 대표 폭포. Upper Falls 중심으로 보는 코스.</p>
+          <p><a href="https://www.michigan.gov/recsearch/parks/tahquamenonfalls" target="_blank">공식 정보 →</a></p>
+        </div>
+      </div>
+      <div class="place">
+        <div class="photo" style="background-image:url('https://www.nps.gov/piro/planyourvisit/images/P1047269-2_1.jpg?autorotate=false&maxwidth=900')"></div>
+        <div class="place-body">
+          <span class="tag">Day 2 · 오후</span>
+          <h3>Pictured Rocks</h3>
+          <p>이번 일정의 메인. Cruise + Miners Castle 조합이 핵심.</p>
+          <p><a href="https://www.nps.gov/piro/planyourvisit/index.htm" target="_blank">NPS 정보 →</a></p>
+        </div>
+      </div>
+      <div class="place">
+        <div class="fallback">🌊</div>
+        <div class="place-body">
+          <span class="tag">Day 3 · 아침</span>
+          <h3>Presque Isle Park</h3>
+          <p>Marquette의 Lake Superior 해안과 Black Rocks를 짧게 보기 좋은 곳.</p>
+          <p><a href="https://www.travelmarquette.com/things-to-do/attractions/presque-isle-park/" target="_blank">관광 정보 →</a></p>
+        </div>
+      </div>
+      <div class="place">
+        <div class="fallback" style="background:linear-gradient(135deg,#0d5c63,#44a08d);">💎</div>
+        <div class="place-body">
+          <span class="tag">Day 3 · 귀가길</span>
+          <h3>Kitch-iti-kipi</h3>
+          <p>짧게 들르기 좋은 Michigan 최대 freshwater spring.</p>
+          <p><a href="https://www.michigan.gov/recsearch/parks/palmsbook" target="_blank">공식 정보 →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🔗 빠른 링크</h2>
+    <div class="quick">
+      <a href="https://maps.app.goo.gl/YaWaRFq63meGf2Tt8" target="_blank"><b>🗺️ 전체 Google Maps</b><span>공유용 전체 동선</span></a>
+      <a href="https://picturedrocks.com/" target="_blank"><b>🚢 Pictured Rocks Cruise</b><span>예약/시간 확인</span></a>
+      <a href="https://www.google.com/maps/dir/609%20Baldwin%20Avenue%2C%20Negaunee%2C%20MI%2049866/Presque%20Isle%20Park%2C%20Marquette%2C%20MI/Palms%20Book%20State%20Park%2C%201380%20Sawmill%20Rd%2C%20Manistique%2C%20MI%2049854/Ann%20Arbor%2C%20MI" target="_blank"><b>💎 Day 3 Route</b><span>Marquette → Kitch-iti-kipi → Ann Arbor</span></a>
+    </div>
+  </section>
+
+  <div class="footer">
+    v4 · GitHub Pages용 single-file HTML. 외부 이미지는 공식/관광 출처 URL을 사용하며, 이미지가 로드되지 않는 경우에도 레이아웃이 유지되도록 일부 카드는 아이콘형으로 구성.
+  </div>
+</main>
+</body>
+</html>
